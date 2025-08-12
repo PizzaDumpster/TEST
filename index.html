@@ -4,10 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="TEST - A repository for testing AI capabilities and demonstrations">
-    <meta name="keywords" content="AI testing, demonstration, repository, testing">
+    <meta name="keywords" content="AI testing, demonstration, repository, testing, artificial intelligence">
     <meta name="author" content="PizzaDumpster">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Open Graph meta tags for better social media sharing -->
+    <meta property="og:title" content="TEST - AI Testing Repository">
+    <meta property="og:description" content="A repository for testing AI capabilities and demonstrations, featuring a clean, modern website built for GitHub Pages deployment.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pizzadumpster.github.io/TEST/">
+    <meta property="og:image" content="https://pizzadumpster.github.io/TEST/favicon.svg">
+    
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="TEST - AI Testing Repository">
+    <meta name="twitter:description" content="A repository for testing AI capabilities and demonstrations">
+    
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self';">
+    
     <title>TEST - AI Testing Repository</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      "name": "TEST - AI Testing Repository",
+      "description": "A repository for testing AI capabilities and demonstrations",
+      "url": "https://github.com/PizzaDumpster/TEST",
+      "author": {
+        "@type": "Person",
+        "name": "PizzaDumpster"
+      },
+      "programmingLanguage": ["HTML", "CSS", "JavaScript"],
+      "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
 </head>
 <body>
     <header>
@@ -19,10 +56,13 @@
                         <a href="#home" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a href="#demo" class="nav-link">Demo</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#about" class="nav-link">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://github.com/PizzaDumpster/TEST" class="nav-link" target="_blank">GitHub</a>
+                        <a href="https://github.com/PizzaDumpster/TEST" class="nav-link" target="_blank" rel="noopener">GitHub</a>
                     </li>
                 </ul>
             </div>
@@ -40,12 +80,57 @@
                     for exploring AI technologies and showcasing various implementations.
                 </p>
                 <div class="hero-buttons">
-                    <a href="https://github.com/PizzaDumpster/TEST" class="btn btn-primary" target="_blank">
+                    <a href="https://github.com/PizzaDumpster/TEST" class="btn btn-primary" target="_blank" rel="noopener">
                         View on GitHub
                     </a>
                     <a href="#about" class="btn btn-secondary">
                         Learn More
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="demo">
+            <div class="container">
+                <h2 class="section-title">AI Capabilities Demo</h2>
+                <p class="demo-intro">Experience some of the AI testing capabilities this repository demonstrates</p>
+                
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <h3>🧠 Text Analysis</h3>
+                        <textarea id="textInput" placeholder="Enter some text to analyze..." rows="3"></textarea>
+                        <button onclick="analyzeText()" class="btn btn-demo">Analyze Text</button>
+                        <div id="textResult" class="demo-result"></div>
+                    </div>
+                    
+                    <div class="demo-card">
+                        <h3>🎲 Random Data Generator</h3>
+                        <p>Generate sample data for AI training and testing</p>
+                        <button onclick="generateData()" class="btn btn-demo">Generate Data</button>
+                        <div id="dataResult" class="demo-result"></div>
+                    </div>
+                    
+                    <div class="demo-card">
+                        <h3>📊 Performance Metrics</h3>
+                        <p>Simulated AI model performance indicators</p>
+                        <button onclick="showMetrics()" class="btn btn-demo">Show Metrics</button>
+                        <div id="metricsResult" class="demo-result"></div>
+                    </div>
+                </div>
+                
+                <div class="demo-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="demoCounter">0</span>
+                        <span class="stat-label">Demos Run</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Availability</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Possibilities</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -85,10 +170,124 @@
         <div class="container">
             <p>&copy; 2025 PizzaDumpster. Licensed under the MIT License.</p>
             <p>
-                <a href="https://github.com/PizzaDumpster/TEST" target="_blank">GitHub Repository</a> | 
-                <a href="https://github.com/PizzaDumpster/TEST/blob/main/LICENSE" target="_blank">License</a>
+                <a href="https://github.com/PizzaDumpster/TEST" target="_blank" rel="noopener">GitHub Repository</a> | 
+                <a href="https://github.com/PizzaDumpster/TEST/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
             </p>
         </div>
     </footer>
+    
+    <script>
+        let demoCount = 0;
+        
+        function updateDemoCounter() {
+            demoCount++;
+            document.getElementById('demoCounter').textContent = demoCount;
+        }
+        
+        function analyzeText() {
+            const input = document.getElementById('textInput').value;
+            const result = document.getElementById('textResult');
+            
+            if (!input.trim()) {
+                result.innerHTML = '<p style="color: #e74c3c;">Please enter some text to analyze.</p>';
+                return;
+            }
+            
+            // Simulate text analysis
+            const words = input.split(/\s+/).length;
+            const chars = input.length;
+            const sentences = input.split(/[.!?]+/).length - 1;
+            const sentiment = Math.random() > 0.5 ? 'Positive' : 'Negative';
+            const confidence = (Math.random() * 0.3 + 0.7).toFixed(2);
+            
+            result.innerHTML = `
+                <h4>Analysis Results:</h4>
+                <p><strong>Words:</strong> ${words}</p>
+                <p><strong>Characters:</strong> ${chars}</p>
+                <p><strong>Sentences:</strong> ${sentences}</p>
+                <p><strong>Sentiment:</strong> ${sentiment} (${confidence} confidence)</p>
+                <p><strong>Readability:</strong> ${words < 20 ? 'Simple' : words < 50 ? 'Moderate' : 'Complex'}</p>
+            `;
+            
+            updateDemoCounter();
+        }
+        
+        function generateData() {
+            const result = document.getElementById('dataResult');
+            
+            // Generate sample training data
+            const data = [];
+            for (let i = 0; i < 5; i++) {
+                data.push({
+                    id: Math.floor(Math.random() * 10000),
+                    value: (Math.random() * 100).toFixed(2),
+                    category: ['A', 'B', 'C'][Math.floor(Math.random() * 3)],
+                    timestamp: new Date().toISOString().split('T')[0]
+                });
+            }
+            
+            result.innerHTML = `
+                <h4>Generated Training Data:</h4>
+                <pre>${JSON.stringify(data, null, 2)}</pre>
+            `;
+            
+            updateDemoCounter();
+        }
+        
+        function showMetrics() {
+            const result = document.getElementById('metricsResult');
+            
+            // Simulate AI model metrics
+            const accuracy = (Math.random() * 0.2 + 0.8).toFixed(3);
+            const precision = (Math.random() * 0.2 + 0.75).toFixed(3);
+            const recall = (Math.random() * 0.2 + 0.8).toFixed(3);
+            const f1Score = (2 * precision * recall / (parseFloat(precision) + parseFloat(recall))).toFixed(3);
+            
+            result.innerHTML = `
+                <h4>Model Performance:</h4>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <span class="metric-value">${(accuracy * 100).toFixed(1)}%</span>
+                        <span class="metric-label">Accuracy</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">${(precision * 100).toFixed(1)}%</span>
+                        <span class="metric-label">Precision</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">${(recall * 100).toFixed(1)}%</span>
+                        <span class="metric-label">Recall</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">${f1Score}</span>
+                        <span class="metric-label">F1-Score</span>
+                    </div>
+                </div>
+            `;
+            
+            updateDemoCounter();
+        }
+        
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add keyboard support for demo buttons
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.target.classList.contains('btn-demo')) {
+                e.target.click();
+            }
+        });
+    </script>
 </body>
 </html>
